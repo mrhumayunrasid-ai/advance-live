@@ -1,0 +1,38 @@
+// Sample dynamic data
+const trendingVideos = [
+  { title: "Funny Cats Compilation", img: "https://via.placeholder.com/300x170?text=Video+1" },
+  { title: "Latest Tech Review", img: "https://via.placeholder.com/300x170?text=Video+2" },
+  { title: "Top Netflix Shows", img: "https://via.placeholder.com/300x170?text=Video+3" },
+];
+
+const socialFeed = [
+  { title: "Instagram Highlights", img: "https://via.placeholder.com/300x170?text=Instagram" },
+  { title: "Facebook Trending", img: "https://via.placeholder.com/300x170?text=Facebook" },
+  { title: "TikTok Viral", img: "https://via.placeholder.com/300x170?text=TikTok" },
+];
+
+const shopProducts = [
+  { title: "Smart Watch", price: "$49.99", img: "https://via.placeholder.com/300x170?text=Product+1" },
+  { title: "Wireless Earbuds", price: "$29.99", img: "https://via.placeholder.com/300x170?text=Product+2" },
+  { title: "Gaming Mouse", price: "$19.99", img: "https://via.placeholder.com/300x170?text=Product+3" },
+];
+
+// Function to render cards
+function renderCards(data, containerId, showPrice=false) {
+  const container = document.getElementById(containerId);
+  data.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <img src="${item.img}" alt="${item.title}">
+      <h3>${item.title}</h3>
+      ${showPrice ? `<p>${item.price}</p>` : ''}
+    `;
+    container.appendChild(card);
+  });
+}
+
+// Render all sections
+renderCards(trendingVideos, 'trending-videos');
+renderCards(socialFeed, 'social-feed');
+renderCards(shopProducts, 'shop-products', true);
